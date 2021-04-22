@@ -7,22 +7,26 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   rules:
-    - host: posts.com
+    - host: tasks.com
       http:
         paths:
-          - path: /posts/create
+          - path: /tasks/create
             backend:
-              serviceName: posts-clusterip-srv
+              serviceName: task-service
               servicePort: 4000
-          - path: /posts
+          - path: /tasks/?(.*)/
             backend:
-              serviceName: query-srv
+              serviceName: task-service
+              servicePort: 4000
+          - path: /expenses/create
+            backend:
+              serviceName: expense-service
               servicePort: 4002
-          - path: /posts/?(.*)/comments
+          - path: /expenses
             backend:
-              serviceName: comments-srv
-              servicePort: 4001
+              serviceName: expense-service
+              servicePort: 4002
           - path: /?(.*)
             backend:
-              serviceName: client-srv
+              serviceName: client-service
               servicePort: 3000
