@@ -11,7 +11,7 @@ async function dbConnect() {
       useCreateIndex: true
     });
 
-    console.log('database is connected')
+    console.log('expense db is connected')
   }
   catch (e) {
     console.log(e)

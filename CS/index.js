@@ -14,12 +14,12 @@ app.use(bodyParser.json({limit: '50mb'}));
 
 dbConnect();
 
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT || 4001
 
 ///Routes
-app.use('/tasks', taskRoute)
+app.use('/cs', taskRoute)
 
 app.listen(PORT, (req,res)=>{
-console.log('server is running at', PORT)
+console.log('tasks server is running at', PORT)
 })
 
