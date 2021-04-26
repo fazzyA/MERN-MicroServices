@@ -12,7 +12,8 @@ RUN yarn build
 FROM nginx:1.15.2-alpine
 # Nginx config
 RUN rm -rf /etc/nginx/conf.d
-COPY conf /etc/nginx
+#COPY conf /etc/nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Static build
 COPY --from=builder /client/build /usr/share/nginx/html/
 # Default port exposure

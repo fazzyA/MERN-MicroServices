@@ -1,8 +1,0 @@
-apiVersion: v1
-data:
-  API_URL1: http://20.197.106.129:5000
-  API_URL2: http://20.197.106.129:5000
-kind: ConfigMap
-metadata:
-  creationTimestamp: null
-  name: client-config

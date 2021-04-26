@@ -25,3 +25,15 @@ nav{
 .box{
   border-bottom: 2px solid #d9b0dd;
 }
+
+
+.mybtn{
+  background:    #15d798;
+background:    linear-gradient(#15d798, #076358);
+border-radius: 11px;
+padding:       20px 45px;
+color:         #ffffff;
+display:       inline-block;
+font:          normal bold 26px/1 "Open Sans", sans-serif;
+text-align:    center;
+}

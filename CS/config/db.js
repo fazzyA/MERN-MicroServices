@@ -11,7 +11,7 @@ async function dbConnect() {
       useCreateIndex: true
     });
 
-    console.log('task db is connected')
+    console.log('CS db is connected')
   }
   catch (e) {
     console.log(e)

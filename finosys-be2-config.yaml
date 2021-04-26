@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: be2-config
+data:
+  PORT: "5001"
+  CLIENT: 20.197.104.123
+  MONGO_URL: mongodb://db2-service:27017/db2

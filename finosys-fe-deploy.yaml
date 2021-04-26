@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: finosys-fe
+  name: finosys-fe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: finosys-fe
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: finosys-fe
+    spec:
+      containers:
+      - image: fazzyaziz/finosys-fe:v03
+        imagePullPolicy: Always
+        name: finosys-fe
+        envFrom:
+        - configMapRef:
+            name: fe-config
+        resources: {}
+status: {}

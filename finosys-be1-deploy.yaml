@@ -1,25 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: todo-server-app-deploy
+  name: finosys-be1
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: todo-server-app
+      app: be1
   template:
     metadata:
       labels:
-        app: todo-server-app
+        app: be1
     spec:
       containers:
-      - image: fazzyaziz/backend-mern:v3
-        name: container1
+      - image: fazzyaziz/finosys-be1:v1
+        name: container-be1
         imagePullPolicy: "Always"
         ports:
         - containerPort: 5000
         envFrom:
         - configMapRef:
-            name: server-side-configs
-        - secretRef:
-            name: server-side-secrets
+            name: be1-config

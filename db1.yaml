@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: mongodb
+  name: db1
   labels:
-    app: db-mongodb
+    app: db1
 spec:
   volumes:
-  - name: db-mongo-vol
+  - name: pv1
     persistentVolumeClaim:
-      claimName: db-pvc
+      claimName: pvc1
   containers:
   - image: mongo
     name: container1
@@ -19,5 +19,5 @@ spec:
     ports:
     - containerPort: 27017
     volumeMounts:
-    - name: db-mongo-vol
+    - name: pv1
       mountPath: /data/db

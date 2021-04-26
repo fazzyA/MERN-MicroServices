@@ -18,6 +18,7 @@ const PORT = process.env.PORT || 4000
 
 ///Routes
 app.use('/history', expenseRoute)
+app.get('/test', (req,res)=>res.send('hello world'))
 
 app.listen(PORT, (req,res)=>{
 console.log('expenses server is running at', PORT)

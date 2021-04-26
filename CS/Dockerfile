@@ -1,13 +1,13 @@
 FROM node:alpine
 
-WORKDIR /server
+WORKDIR /CS
 
 COPY package.json ./
 
 RUN npm install
 
-COPY ./src ./src
+COPY . .
 
-EXPOSE 5000
+EXPOSE 5001
 
 CMD [ "npm", "start" ]
