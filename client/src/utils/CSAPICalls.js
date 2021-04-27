@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-    baseURL: process.env.REACT_APP_DB2,
+    baseURL: process.env.APP_DB2,
     // withCredentials: true,
 });
 
@@ -16,7 +16,7 @@ axiosInstance.interceptors.response.use(
 );
 
 export const add = (data) => {
-    return axiosInstance.post(process.env.REACT_APP_DB2 + '/add', data).then(user => {
+    return axiosInstance.post(process.env.APP_DB2 + '/add', data).then(user => {
         // delete axiosInstance.defaults.headers.common["Authorization"];
         return user
     })
