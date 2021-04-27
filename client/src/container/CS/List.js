@@ -22,7 +22,7 @@ export default function CSList() {
 
   const classes = useStyles();
   const [CSList, setCSList] = useState([])
-  const baseURL = process.env.REACT_APP_DB2
+  const baseURL = process.env.APP_DB2
   useEffect(() => {
     axios.get(`${baseURL}/`)
       .then(res => {

@@ -3,8 +3,8 @@ import { Grid, Box } from '@material-ui/core';
 import axios from 'axios'
 
 function Home() {
-    const baseURL1 = process.env.REACT_APP_DB1
-    const baseURL2 = process.env.REACT_APP_DB2
+    const baseURL1 = process.env.APP_DB1
+    const baseURL2 = process.env.APP_DB2
     // const [HistoryList, setHistoryList] = useState([])
     // const [CSList, setCSList] = useState([])
     const [AllList, setAllList] = useState([])

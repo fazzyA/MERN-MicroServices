@@ -8,7 +8,7 @@ function CSCreate() {
     description: ''
   })
 
-  const baseURL = process.env.REACT_APP_DB2
+  const baseURL = process.env.APP_DB2
 
   const handleSubmit = (e) => {
     e.preventDefault()

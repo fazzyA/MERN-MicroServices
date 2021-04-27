@@ -8,7 +8,7 @@ function HistoryCreate() {
     description: ''
   })
 
-  const baseURL = process.env.REACT_APP_DB1
+  const baseURL = process.env.APP_DB1
 
   const handleSubmit = (e) => {
     e.preventDefault()
