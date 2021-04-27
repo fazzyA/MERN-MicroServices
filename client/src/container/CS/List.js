@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import axios from 'axios'
 import Box from '@material-ui/core/Box';
+import { fetchCS } from '../../utils/CSAPICalls'
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -24,13 +25,20 @@ export default function CSList() {
   const [CSList, setCSList] = useState([])
   const baseURL = process.env.APP_DB2
   useEffect(() => {
-    axios.get(`${baseURL}/`)
-      .then(res => {
-        console.log(res)
-        let csbooks = res.data.data
-        setCSList(csbooks)
-      })
-      .catch(err => console.log(err, 'error'));
+
+    fetchCS()
+    .then(res => {
+     console.log(res.data.data)
+    let csbooks = res.data.data
+    setCSList(csbooks)
+    })
+    // axios.get(`${baseURL}/`)
+    //   .then(res => {
+    //     console.log(res)
+    //     let csbooks = res.data.data
+    //     setCSList(csbooks)
+    //   })
+    //   .catch(err => console.log(err, 'error'));
   }, [])
 
   return (

@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { Grid, Box } from '@material-ui/core';
 import axios from 'axios'
+import { fetchCS } from '../../utils/CSAPICalls'
+import { fetchHistory } from '../../utils/HistoryAPICalls'
 
 function Home() {
     const baseURL1 = process.env.APP_DB1
     const baseURL2 = process.env.APP_DB2
-    // const [HistoryList, setHistoryList] = useState([])
-    // const [CSList, setCSList] = useState([])
     const [AllList, setAllList] = useState([])
     const getDataFromDb = () => {
         Promise.all([
-            `${baseURL1}/`,
-            `${baseURL2}/`,
-        ].map(url => (
-            axios.get(url)
-            .then(res => res.data.data)
-          )
-        ))
+            fetchHistory,
+            fetchCS,
+        ]
+        .map(url => (
+            url()
+            .then(res => res.data.data))
+        )
+        )
         .then(res => {
             console.log(res);
             setAllList([...res[0],...res[1]])

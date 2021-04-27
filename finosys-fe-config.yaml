@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: fe-config
 data:
-  APP_DB1: http://52.139.240.96:5000
-  APP_DB2: http://52.139.243.88:5001
+  REACT_APP_DB1: http://52.139.240.96:5000
+  REACT_APP_DB2: http://52.139.243.88:5001

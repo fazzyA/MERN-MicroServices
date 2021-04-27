@@ -24,5 +24,3 @@ spec:
         envFrom:
         - configMapRef:
             name: fe-config
-        resources: {}
-status: {}

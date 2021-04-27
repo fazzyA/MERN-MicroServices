@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, TextField, Grid  } from '@material-ui/core';
-import axios from 'axios'
+import { add } from '../../utils/CSAPICalls'
 
 function CSCreate() {
   const [Header, setHeader] = useState({
@@ -12,13 +12,16 @@ function CSCreate() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    add(Header)
+    .then(res=>console.log('CS book added'))
+    .catch(e=>console.log(e))
 
-      axios.post(`${baseURL}/add`,Header)
-          .then(res => {
-        console.log(res)
-        //history.push('/posts');
-      })
-    .catch(err => console.log(err, 'error'));
+    //   axios.post(`${baseURL}/add`,Header)
+    //       .then(res => {
+    //     console.log(res)
+    //     //history.push('/posts');
+    //   })
+    // .catch(err => console.log(err, 'error'));
   }
 
   return (

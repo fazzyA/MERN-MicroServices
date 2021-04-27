@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import { fetchHistory } from '../../utils/HistoryAPICalls'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,13 +24,21 @@ export default function HistoryList() {
   const [HistoryList, setHistoryList] = useState([])
   const baseURL = process.env.REACT_APP_DB1
   useEffect(() => {
-    axios.get(`${baseURL}/`)
-      .then(res => {
-        console.log(res)
-        let historybooks = res.data.data
-        setHistoryList(historybooks)
-      })
-      .catch(err => console.log(err, 'error'));
+    fetchHistory()
+    .then(res => {
+     console.log(res.data.data)
+    let historybooks = res.data.data
+    setHistoryList(historybooks)
+    })
+    .catch(e=>console.log(e))
+
+    // axios.get(`${baseURL}/`)
+    //   .then(res => {
+    //     console.log(res)
+    //     let historybooks = res.data.data
+    //     setHistoryList(historybooks)
+    //   })
+    //   .catch(err => console.log(err, 'error'));
   }, [])
 
   return (

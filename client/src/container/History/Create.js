@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, TextField, Grid  } from '@material-ui/core';
-import axios from 'axios'
+import { add } from '../../utils/HistoryAPICalls'
 
 function HistoryCreate() {
   const [Header, setHeader] = useState({
@@ -12,13 +12,16 @@ function HistoryCreate() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    add(Header)
+    .then(res=>console.log('History book added'))
+    .catch(e=>console.log(e))
 
-      axios.post(`${baseURL}/add`,Header)
-          .then(res => {
-        console.log(res)
-        //history.push('/posts');
-      })
-    .catch(err => console.log(err, 'error'));
+    //   axios.post(`${baseURL}/add`,Header)
+    //       .then(res => {
+    //     console.log(res)
+    //     //history.push('/posts');
+    //   })
+    // .catch(err => console.log(err, 'error'));
   }
 
   return (
