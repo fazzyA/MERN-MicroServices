@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: fe-config
 data:
-  APP_DB1: http://52.139.240.96:5000
-  APP_DB2: http://52.139.243.88:5001
+  APP_DB1: http://52.139.240.96:5000/history
+  APP_DB2: http://52.139.243.88:5001/cs
