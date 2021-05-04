@@ -18,7 +18,7 @@ spec:
         app: finosys-fe
     spec:
       containers:
-      - image: fazzyaziz/finosys-fe:v03
+      - image: fazzyaziz/finosys-fe:v15
         imagePullPolicy: Always
         name: finosys-fe
         envFrom:

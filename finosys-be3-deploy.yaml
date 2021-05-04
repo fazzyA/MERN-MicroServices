@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finosys-be3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: be3
+  template:
+    metadata:
+      labels:
+        app: be3
+    spec:
+      containers:
+      - image: fazzyaziz/finosys-be3:v1
+        name: container-be3
+        imagePullPolicy: "Always"
+        ports:
+        - containerPort: 5002
+        envFrom:
+        - configMapRef:
+            name: be3-config

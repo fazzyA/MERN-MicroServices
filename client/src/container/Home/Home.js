@@ -1,69 +1,79 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { Grid, Box } from '@material-ui/core';
 import axios from 'axios'
 import { fetchCS } from '../../utils/CSAPICalls'
 import { fetchHistory } from '../../utils/HistoryAPICalls'
+import { UC } from '../../context/UserContext'
+import Register from '../../components/Register';
+import Growl from '../../components/Growl';
+import { add} from '../../utils/TrAPICalls'
 
 function Home() {
     const [AllList, setAllList] = useState([])
-    const getDataFromDb = () => {
+    const [columns, setColumns] = useState([
+        { title: 'title', field: 'title' },
+        { title: 'description', field: 'description' },
+        { title: 'category', field: 'category' },
+        { title: 'date', field: 'date' },
+    ]);
+    const [property, setProperty] = useState({
+        error: '',
+        open: false,
+        severity: '',
+    })
+    const [state, setState] = useContext(UC)
+    const handleBorrow =({book,category})=>{
+        add({book, category, userID:state.userID,userName:state.userName})
+        setProperty({
+         ...property,
+         msg: "Book is borrowed",
+         severity: 'error',
+         open: true,
+     });
+   }
+       const getDataFromDb = () => {
         Promise.all([
             fetchHistory,
             fetchCS,
         ]
-        .map(url => (
-            url()
-            .then(res => res.data.data))
+            .map(url => (
+                url()
+                    .then(res => res.data.data))
+            )
         )
-        )
-        .then(res => {
-            console.log(res);
-            setAllList([...res[0],...res[1]])
-        })
+            .then(res => {
+                // console.log(res);
+                setAllList([...res[0], ...res[1]])
+            })
         // .then(([passed, failed, data2]) => 
         //   this.setState({ passed, failed, data2 })
         // );
-      }
+    }
     useEffect(() => {
         getDataFromDb();
-//         axios.get(`${baseURL2}/`)
-//             .then(res => {
-//                 let csbooks = res.data.data
-//                 let allTasks = csbooks.map((currentTask) => {
-//                     return { ...currentTask, completed: false }
-//                 })
-//                  setCSList(csbooks)
-//                 setAllList(allTasks)
-//             })
-//             .catch(err => console.log(err, 'error'));
-// console.log(CSList, HistoryList, AllList);
-// //..........................
-
-//         axios.get(`${baseURL1}/`)
-//             .then(res => {
-//                 let historybooks = res.data.data
-//                 let all = historybooks.map((currentTask) => {
-//                     return { ...currentTask, completed: false }
-//                 })
-//                 setHistoryList(all)
-//                 setAllList(AllList.concat(all))
-//             })
-//             .catch(err => console.log(err, 'error'));
 
     }, [])
 
+    const handleClose = () => {
+        setProperty({ ...property, open: false })
+    }
+    
     return (
         <Grid container spacing={1}>
-
-            {AllList.map((item, index) => (
-
-                <Grid item xs={12} sm={6} lg={6} key={index}>
-                    <Box bgcolor="info.main" color="info.contrastText" p={2}>
-                        {item.title}
-                    </Box>
-                </Grid>
-
-            ))}
+       <Growl
+                    property={property}
+                    close={handleClose}
+                    onClick={handleClose}
+                />
+           <Grid item xs={12} md={12} lg={12} className="">
+                <Register
+                    title={`Books Library`}
+                    columns={columns}
+                    list={AllList}
+                    borrowBtn={true}
+                   handleBorrow={handleBorrow}
+                />
+            </Grid>
 
         </Grid>
     )

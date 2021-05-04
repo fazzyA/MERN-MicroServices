@@ -11,7 +11,7 @@ async function dbConnect() {
       useCreateIndex: true
     });
 
-    console.log('history db is connected')
+    console.log('user db is connected')
   }
   catch (e) {
     console.log(e)

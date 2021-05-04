@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-    //baseURL: window._env_.APP_DB1,
-    baseURL: window._env_.APP_DB1,
+    //baseURL: window._env_.APP_DB4,
+    baseURL: window._env_.APP_DB4,
     // withCredentials: true,
 });
 
@@ -16,22 +16,20 @@ axiosInstance.interceptors.response.use(
     }
 );
 
+
+
 export const add = (data) => {
-        return axiosInstance.post(window._env_.APP_DB1 + '/add', data).then(user => {
+    //return axiosInstance.post(window._env_.APP_DB4 + '/add', data).then(user => {
+        return axiosInstance.post(window._env_.APP_DB4 + '/add', data).then(user => {
             // delete axiosInstance.defaults.headers.common["Authorization"];
         return user
     })
 }
 
 
-export const init = () => {
-    return axiosInstance.post('/init').then(user => {
-        return user.data
-    })
-}
 
-export const fetchHistory = () => {
-    return axiosInstance.get('/').then(user => {
+export const fetchTr = (name) => {
+    return axiosInstance.post('/',{name}).then(user => {
         // axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${user.data.token}`;
         return user
     })

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: db3
+  labels:
+    app: db3
+spec:
+  volumes:
+  - name: pv3
+    persistentVolumeClaim:
+      claimName: pvc3
+  containers:
+  - image: mongo
+    name: container3
+    command:
+    - mongod
+    - "--bind_ip"
+    - "0.0.0.0"
+    ports:
+    - containerPort: 27017
+    volumeMounts:
+    - name: pv3
+      mountPath: /data/db

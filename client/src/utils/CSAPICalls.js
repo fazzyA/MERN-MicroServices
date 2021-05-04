@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
+    //baseURL: window._env_.APP_DB2,
     baseURL: window._env_.APP_DB2,
     // withCredentials: true,
 });
@@ -16,8 +17,9 @@ axiosInstance.interceptors.response.use(
 );
 
 export const add = (data) => {
-    return axiosInstance.post(window._env_.APP_DB2 + '/add', data).then(user => {
-        // delete axiosInstance.defaults.headers.common["Authorization"];
+    //return axiosInstance.post(window._env_.APP_DB2 + '/add', data).then(user => {
+        return axiosInstance.post(window._env_.APP_DB2 + '/add', data).then(user => {
+            // delete axiosInstance.defaults.headers.common["Authorization"];
         return user
     })
 }

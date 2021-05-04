@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: be3-config
+data:
+  PORT: "5002"
+  CLIENT: 20.195.39.77
+  MONGO_URL: mongodb://db3-service:27017/db3

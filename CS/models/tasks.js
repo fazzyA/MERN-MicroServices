@@ -5,6 +5,7 @@ const taskSchema = mongoose.Schema({
     description: String,
     user: String,
     img: String,
+    category: String,
     date: {
         type: Date,
         default: new Date()
