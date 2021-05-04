@@ -21,3 +21,17 @@ spec:
     volumeMounts:
     - name: pv4
       mountPath: /data/db
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: db4
+  name: db4-service
+spec:
+  ports:
+    - port: 27017
+      targetPort: 27017
+      protocol: TCP
+  selector:
+    app: db4    

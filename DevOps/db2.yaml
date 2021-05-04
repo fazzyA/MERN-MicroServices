@@ -21,3 +21,18 @@ spec:
     volumeMounts:
     - name: pv2
       mountPath: /data/db
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: db2
+  name: db2-service
+spec:
+  ports:
+    - port: 27017
+      targetPort: 27017
+      protocol: TCP
+  selector:
+    app: db2
+        

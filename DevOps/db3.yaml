@@ -21,3 +21,17 @@ spec:
     volumeMounts:
     - name: pv3
       mountPath: /data/db
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: db3
+  name: db3-service
+spec:
+  ports:
+    - port: 27017
+      targetPort: 27017
+      protocol: TCP
+  selector:
+    app: db3

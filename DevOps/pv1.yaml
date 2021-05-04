@@ -1,4 +1,16 @@
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv1
+spec:
+ accessModes:
+ - ReadWriteMany
+ capacity:
+   storage: 1Gi
+ hostPath:
+   path: /tmp/pv1
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: pvc1
@@ -9,3 +21,4 @@ spec:
     requests:
       storage: 1Gi
   storageClassName: ""
+
